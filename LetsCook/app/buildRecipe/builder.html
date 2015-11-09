@@ -1,0 +1,29 @@
+<div ng-controller='BuilderController'>
+  URL: <input type='text' ng-model='data.url'></input>
+  <button ng-click='extractRecipe()'>Submit</button>
+  <div ng-show='loaded' class='ng-hide recipeCard'>
+    <div class='heading'>{{title}}</div>
+    <br>
+    <div class='infobar'>
+      <div class='section'>
+        <div class ='title'>Prep Time</div>
+        <div class ='data'>{{cookingMinutes}}</div>
+      </div>
+      <div class='section'>
+        <div class ='title'>Cook Time</div>
+        <div class ='data'>{{readyInMinutes}}</div>
+      </div><div class='section'>
+        <div class ='title'>Servings</div>
+        <div class ='data'>{{servings}}</div>
+      </div>
+    </div>
+    <div class='heading'>Ingredients</div>
+    <ul ng-repeat='ingredient in ingredients'>
+      <li>{{ingredient.originalString}}</li>
+    </ul>
+    <div class='heading'>Method</div>
+    <div>{{instructions}}</div>
+    <div>Source: {{sourceUrl}}</div>
+    <!-- <div class='message'>{{recipe}}</div> -->
+  </div>
+</div>

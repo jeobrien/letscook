@@ -1,0 +1,34 @@
+<div ng-controller='RecipeController'>
+  <form name="recipeForm">
+  Cuisine:<br>
+    <select ng-model="data.cuisine"
+      ng-options="cuisine for cuisine in cuisines">     
+    </select>
+    <br>
+  Diet:<br>
+  <select ng-model="data.diet"
+    ng-options="diet for diet in diets">     
+  </select>
+  <br>
+  Exclude: <input type='text'ng-model="data.exclude">
+  Intolerances:<br>
+  <select ng-model="data.intolerances"
+    ng-options="intolerance for intolerance in intolerances">
+  </select>
+  <br>
+  Query: <input type='text' ng-model="data.query" required="string">
+  Type:<br>
+  <select ng-model="data.type"
+    ng-options="type for type in types">
+  </select>
+  <br>
+  <button ng-click='getRecipes()'>Submit</button>
+</form>
+
+  <div class='links'>
+    <div class='link' ng-repeat="recipe in results">
+      <div>{{recipe}}</div>
+      <!-- <img src={{recipe.image}}> -->
+    </div>
+  </div>
+</div>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html ng-app='LetsCook'>
+  <head>
+    <meta charset="utf-8" />
+    <link href='https://fonts.googleapis.com/css?family=ABeeZee:400,400italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Covered+By+Your+Grace' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Covered+By+Your+Grace|Nixie+One' rel='stylesheet' type='text/css'>
+    <title>Let's Cook</title><img class="logo" src="assets/forkspoon.jpg" alt="ForkSpoon">
+    <link rel="stylesheet" type="text/css" href="styles/style.css" />
+  </head>
+  <body>
+    <h1>LetsCook</h1>
+  <div id='container' ng-controller='IndexController'>
+    <nav class='navigation'>
+      <ul>
+        <li><a href='#/question'class='selected'>Ask a Question</a></li>
+        <li><a href='#/planner' class='selected'>Meal Planner</a></li>
+        <li><a href='#/recipes' class='selected'>Recipes</a></li>
+        <li><a href='#/builder' class='selected'>Build a Recipe</a></li>
+      </ul>
+    </nav>
+  </div>
+    <div ng-view></div>
+    <script src="lib/angular/angular.js"></script>
+    <script src="lib/angular-route/angular-route.js"></script>
+
+    <script src="index.js"></script>
+    <script src="app/askQuestion/question.js"></script>
+    <script src="app/recipes/recipes.js"></script>
+    <script src="app/buildRecipe/builder.js"></script>
+    <script src="app/mealPlan/planner.js"></script>
+    <script src="app/services/services.js"></script>
+    <script src="app/app.js"></script>
+  </body>
+</html>
+

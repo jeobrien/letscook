@@ -1,0 +1,8 @@
+{
+  "name": "LetsCook",
+  "version": "0.0.1",
+  "main": "app.js",
+  "author": "Jessica O'Brien",
+  "devDependencies": {
+  }
+}
