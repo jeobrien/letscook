@@ -1,9 +1,12 @@
 <div ng-controller='RecipeController'>
   <form ng-hide='loaded' name="recipeForm">
-  <br>
-    <input type='text' ng-model="data.query" required="string" placeholder='Query, e.g. chocolate brownies'>
-    <br>
     <table>
+      <tr>
+        <td>Query</td>
+        <td>
+          <input type='text' ng-model="data.query" required="string" placeholder='Query, e.g. chocolate brownies'>
+        </td>
+      </tr>
       <tr>
         <td>Cuisine</td>
         <td>

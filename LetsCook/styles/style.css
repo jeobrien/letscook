@@ -10,7 +10,7 @@ body {
   background-color: rgb(109, 189, 214);;
   text-align: center;
   padding: 0;
-  margin: 0;
+  margin: 50px;
 }
 .nav li {
   font-size: 1.2em;
@@ -42,7 +42,7 @@ body {
 h1 {
   font-style: italic;
   font-family: 'Covered By Your Grace', cursive;
-  font-size: 48px ;
+  font-size: 55px ;
   margin-bottom: 10px;
   margin-left: 10px;
   text-align: center;
@@ -56,7 +56,7 @@ div {
 
 input {
   display: block;
-  margin : 40px auto;
+  margin : 5px auto;
 }
 
 button {
@@ -75,7 +75,7 @@ button {
   display:inline-block;
   cursor:pointer;
   color:#666666;
-  font-size:24px;
+  font-size:18px;
   padding:5px 10px;
   margin: 10px;
   text-decoration:none;
@@ -184,9 +184,19 @@ form {
 }
 
 input {
-  width: 360px;
+  width: 340px;
+  height: 30px;
   display: block;
-  font-size: 13px;
+  font-size: 18px;
+  padding: 5px;
+  margin-bottom: 5px;
+}
+
+select {
+  width: 360px;
+  height: 30px;
+  display: block;
+  font-size: 18px;
   padding: 5px;
   margin-bottom: 5px;
 }
@@ -300,6 +310,7 @@ input[type=url]:focus {
   font-weight: normal;
   font-style: normal;
   text-align: center;
+  margin: 20px;
 }
 .recipeCard .ingredients {
   font-family: 'ABeeZee', sans-serif;
@@ -307,6 +318,12 @@ input[type=url]:focus {
   font-weight: normal;
   font-style: normal;
   text-align: left;
+}
+.recipeCard .source {
+  font-family: 'ABeeZee', sans-serif;
+  font-size: 14px;
+  color: rgb(140, 140, 140);
+  margin: 20px;
 }
 
 

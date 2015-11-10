@@ -26,8 +26,8 @@
     <div class='heading'>Method</div>
     <div class='recipeText'>{{instructions}}</div>
     <br>
-    <div>Source: {{sourceUrl}}</div>
+    <div class='source'>Source: {{sourceUrl}}</div>
   </div>
-  <button ng-click="Submit()">Save</button>
+  <button ng-show='loaded' ng-click="Submit()">Save</button>
 
 </div>

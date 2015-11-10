@@ -25,11 +25,11 @@ Once the project moves into development, the press release can be used as a touc
 
 ## Summary ##
   > Give a summary of the product and the benefit. Assume the reader will not read anything else so make this paragraph good.
-  Use LetsCook to search for recipes in natural language, and to find recipes that use whatever ingredients you have in the fridge. If you are trying to stick to a diet, just enter the number of calories you'd like and the timeframe and have a tailored meal plan complete with links to the recipes! LetsCook will also help you organise your cooking. Type in a URL of a page where you'd like to save a recipe to look at later, and LetsCook will extract the recipe, and give you back a completed recipe card. 
+  Use LetsCook to search for recipes in natural language, and to find recipes that use whatever ingredients you have in the fridge. If you are trying to stick to a diet, just enter the number of calories you'd like and the timeframe and have a tailored meal plan complete with links to the recipes! LetsCook will also help you organise your cooking. Type in a URL of a page with a recipe you'd like to save, and LetsCook will extract the recipe, giving you back a completed recipe card. 
 
 ## Problem ##
   > Describe the problem your product solves.
-  Having screenshots, notes, bookmarked links, and tabs open gets messy. LetsCook lets you put them all into a consistent format, with a few extra features like recipe searching and meal plans on top!
+  Having screenshots, notes, bookmarked links, and tabs open gets messy. LetsCook lets you put them all into a consistent format.
 
 ## Solution ##
   > Describe how your product elegantly solves the problem.

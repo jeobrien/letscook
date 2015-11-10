@@ -1,15 +1,26 @@
 <div ng-controller='PlannerController'>
+  <form ng-hide='loaded'>
   <input type='text' ng-model='data.calories' placeholder='How many calories are you aiming for?'>
+  <br>
+  <br>
   <div class="mainselection">
-    <select ng-model='timeFrames' ng-options='timeFrame for timeFrame in timeFrames'>
-      <option value=''>- Timeframe -</option>
+    TimeFrame:
+    <br>
+    <select ng-model='data.timeFrames' ng-options='timeFrame for timeFrame in timeFrames'>
     </select>
   </div>
   <br>
   <button class='button' ng-click='getPlan()'>Submit</button>
-  <div class='links'>
-    <div class='link' ng-repeat="recipe in plan">
-      <div>{{recipe}}</div>
+  </form>
+  <div class='link'>
+    <div class='recipe' ng-repeat="recipe in plan | orderBy:'-aggregateLikes'">
+      <div class='info'>
+        <div class='likes'>
+          <span class='count'>{{recipe.aggregateLikes}}</span> Likes
+          <!-- <img class='like' src="assets/like.png"> -->
+        </div>
+        <div class="title"><a href="{{recipe.sourceUrl}}">{{recipe.title}}</a></div>
+        <div class="original">{{recipe.sourceName}}</div>
     </div>
   </div>
 </div>

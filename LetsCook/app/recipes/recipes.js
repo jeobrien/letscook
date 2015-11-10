@@ -24,13 +24,6 @@ angular.module('LetsCook.recipes', [])
   "main course", "side dish", "dessert", "appetizer", "salad", "bread", "breakfast", "soup", "beverage", "sauce", "drink"
   ];
 
-// title: title
-// source url sourceUrl
-// source name: sourceName
-// readyin minutes
-// order by popularity
-
-
   $scope.getRecipes = function () {
     Recipes.getRecipes($scope, $scope.data.cuisine, $scope.data.diet, $scope.data.exclude, $scope.data.intolerances, $scope.data.query, $scope.data.type).then(function (responses) {
       // for each result, call getRecipe
