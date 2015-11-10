@@ -10,9 +10,9 @@ angular.module('LetsCook.recipes', [])
     type: ""
   };
   $scope.results = [];
-
+  $scope.loaded = false;
   $scope.cuisines = [
-  "Cuisine", "african", "chinese", "japanese", "korean", "vietnamese", "thai", "indian", "british", "irish", "french", "italian", "mexican", "spanish", "middle eastern", "jewish", "american", "cajun", "southern", "greek", "german", "nordic", "eastern european", "caribbean", "latin american"
+  "african", "chinese", "japanese", "korean", "vietnamese", "thai", "indian", "british", "irish", "french", "italian", "mexican", "spanish", "middle eastern", "jewish", "american", "cajun", "southern", "greek", "german", "nordic", "eastern european", "caribbean", "latin american"
   ];
   $scope.diets = [
   "Diet", "pescetarian", "lacto vegetarian", "ovo vegetarian", "vegan", "vegetarian"
@@ -24,11 +24,19 @@ angular.module('LetsCook.recipes', [])
   "main course", "side dish", "dessert", "appetizer", "salad", "bread", "breakfast", "soup", "beverage", "sauce", "drink"
   ];
 
+// title: title
+// source url sourceUrl
+// source name: sourceName
+// readyin minutes
+// order by popularity
+
+
   $scope.getRecipes = function () {
     Recipes.getRecipes($scope, $scope.data.cuisine, $scope.data.diet, $scope.data.exclude, $scope.data.intolerances, $scope.data.query, $scope.data.type).then(function (responses) {
       // for each result, call getRecipe
       responses.forEach(function (response) {
         Recipes.getRecipe($scope, response.id).then(function (summary) {
+          $scope.loaded = true;
           $scope.results.push(summary);
         })
         .catch(function (err) {
