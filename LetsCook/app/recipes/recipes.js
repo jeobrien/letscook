@@ -12,10 +12,10 @@ angular.module('LetsCook.recipes', [])
   $scope.results = [];
 
   $scope.cuisines = [
-  "african", "chinese", "japanese", "korean", "vietnamese", "thai", "indian", "british", "irish", "french", "italian", "mexican", "spanish", "middle eastern", "jewish", "american", "cajun", "southern", "greek", "german", "nordic", "eastern european", "caribbean", "latin american"
+  "Cuisine", "african", "chinese", "japanese", "korean", "vietnamese", "thai", "indian", "british", "irish", "french", "italian", "mexican", "spanish", "middle eastern", "jewish", "american", "cajun", "southern", "greek", "german", "nordic", "eastern european", "caribbean", "latin american"
   ];
   $scope.diets = [
-  "pescetarian", "lacto vegetarian", "ovo vegetarian", "vegan", "vegetarian"
+  "Diet", "pescetarian", "lacto vegetarian", "ovo vegetarian", "vegan", "vegetarian"
   ];
   $scope.intolerances = [
   "dairy", "egg", "gluten", "peanut", "sesame", "seafood", "shellfish", "soy", "sulfite", "tree nut", "wheat"
@@ -26,28 +26,18 @@ angular.module('LetsCook.recipes', [])
 
   $scope.getRecipes = function () {
     Recipes.getRecipes($scope, $scope.data.cuisine, $scope.data.diet, $scope.data.exclude, $scope.data.intolerances, $scope.data.query, $scope.data.type).then(function (responses) {
-      $scope.results = responses;
+      // for each result, call getRecipe
+      responses.forEach(function (response) {
+        Recipes.getRecipe($scope, response.id).then(function (summary) {
+          $scope.results.push(summary);
+        })
+        .catch(function (err) {
+          console.error(err);
+        });
+      });
     })
     .catch(function (err) {
       console.error(err);
     });
   };
-
-
-  // $scope.getRecipes = function () {
-  //   Recipes.getRecipes($scope, $scope.data.cuisine, $scope.data.diet, $scope.data.exclude, $scope.data.intolerances, $scope.data.query, $scope.data.type).then(function (responses) {
-  //     // for each result, call getRecipe
-  //     responses.forEach(function (response) {
-  //       Recipes.getRecipe($scope, response.id).then(function (summary) {
-  //         $scope.results.push(summary);
-  //       })
-  //       .catch(function (err) {
-  //         console.error(err);
-  //       });
-  //     });
-  //   })
-  //   .catch(function (err) {
-  //     console.error(err);
-  //   });
-  // };
 });

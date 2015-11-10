@@ -10,19 +10,19 @@ angular.module('LetsCook.services', [])
     .then(function (resp) {
       return resp.data.results;
     });
-    // var getRecipe = function ($scope, id) {
-    //   return $http({
-    //     method: 'GET',
-    //     url: 'https://webknox-recipes.p.mashape.com/recipes/{'+id+'}/information'
-    //   })
-    //   .then(function (resp) {
-    //     return resp.data;
-    //   });
-    // };
   };
+    var getRecipe = function ($scope, id) {
+      return $http({
+        method: 'GET',
+        url: 'https://webknox-recipes.p.mashape.com/recipes/'+id+'/information'
+      })
+      .then(function (resp) {
+        return resp.data;
+      });
+    };
   return {
-    getRecipes: getRecipes
-    // getRecipe: getRecipe
+    getRecipes: getRecipes,
+    getRecipe: getRecipe
   };
 
 })
