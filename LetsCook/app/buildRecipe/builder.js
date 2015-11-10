@@ -19,6 +19,13 @@ angular.module('LetsCook.builder', [])
     .catch(function (err) {
       console.error(err);
     });
-    
+  };
+  $scope.toCanvas = function () {
+    html2canvas(document.body, {
+      onrendered: function(canvas) {
+          // canvas is the final rendered <canvas> element
+        document.body.append(canvas);
+      }
+    });
   };
 });
