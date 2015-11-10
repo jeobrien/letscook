@@ -1,7 +1,12 @@
 <div ng-controller='PlannerController'>
-  Calories: <input type='text' ng-model='data.calories'>
-  Timeframe: <input type='text' ng-model='data.timeFrame'>
-  <button ng-click='getPlan()'>Submit</button>
+  <input type='text' ng-model='data.calories' placeholder='How many calories are you aiming for?'>
+  <div class="mainselection">
+    <select ng-model='timeFrames' ng-options='timeFrame for timeFrame in timeFrames'>
+      <option value=''>- Timeframe -</option>
+    </select>
+  </div>
+  <br>
+  <button class='button' ng-click='getPlan()'>Submit</button>
   <div class='links'>
     <div class='link' ng-repeat="recipe in plan">
       <div>{{recipe}}</div>

@@ -1,6 +1,8 @@
 <div ng-controller='BuilderController'>
-  URL: <input type='text' ng-model='data.url'></input>
-  <button ng-click='extractRecipe()'>Submit</button>
+  <div>
+    <input type='text' ng-model='data.url' placeholder='Enter a URL here'></input>
+    <button ng-click='extractRecipe()'>Submit</button>
+  </div>
   <div ng-show='loaded' class='ng-hide recipeCard'>
     <div class='heading'>{{title}}</div>
     <br>
@@ -19,11 +21,11 @@
     </div>
     <div class='heading'>Ingredients</div>
     <ul ng-repeat='ingredient in ingredients'>
-      <li>{{ingredient.originalString}}</li>
+      <li class='ingredients'>{{ingredient.originalString}}</li>
     </ul>
     <div class='heading'>Method</div>
-    <div>{{instructions}}</div>
+    <div class='recipeText'>{{instructions}}</div>
+    <br>
     <div>Source: {{sourceUrl}}</div>
-    <!-- <div class='message'>{{recipe}}</div> -->
   </div>
 </div>

@@ -1,25 +1,28 @@
 <div ng-controller='RecipeController'>
   <form name="recipeForm">
-  Cuisine:<br>
+  <br>
     <select ng-model="data.cuisine"
-      ng-options="cuisine for cuisine in cuisines">     
+      ng-options="cuisine for cuisine in cuisines"> 
+      <option value=''>- Cuisine -</option>    
     </select>
     <br>
-  Diet:<br>
   <select ng-model="data.diet"
-    ng-options="diet for diet in diets">     
+    ng-options="diet for diet in diets">
+    <option value=''>- Diet -</option>        
   </select>
   <br>
-  Exclude: <input type='text'ng-model="data.exclude">
-  Intolerances:<br>
+  <input type='text'ng-model="data.exclude" placeholder='Exclude'>
+  <br>
   <select ng-model="data.intolerances"
     ng-options="intolerance for intolerance in intolerances">
+    <option value=''>- Intolerances -</option>        
   </select>
   <br>
-  Query: <input type='text' ng-model="data.query" required="string">
-  Type:<br>
+  <input type='text' ng-model="data.query" required="string" placeholder='Query'>
+  <br>
   <select ng-model="data.type"
     ng-options="type for type in types">
+    <option value=''>- Type -</option>        
   </select>
   <br>
   <button ng-click='getRecipes()'>Submit</button>

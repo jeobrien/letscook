@@ -5,22 +5,22 @@
     <link href='https://fonts.googleapis.com/css?family=ABeeZee:400,400italic' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Covered+By+Your+Grace' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Covered+By+Your+Grace|Nixie+One' rel='stylesheet' type='text/css'>
-    <title>Let's Cook</title><img class="logo" src="assets/forkspoon.jpg" alt="ForkSpoon">
+    <title>Let's Cook</title>
     <link rel="stylesheet" type="text/css" href="styles/style.css" />
   </head>
   <body>
     <h1>LetsCook</h1>
-  <div id='container' ng-controller='IndexController'>
-    <nav class='navigation'>
-      <ul>
-        <li><a href='#/question'class='selected'>Ask a Question</a></li>
-        <li><a href='#/planner' class='selected'>Meal Planner</a></li>
-        <li><a href='#/recipes' class='selected'>Recipes</a></li>
-        <li><a href='#/builder' class='selected'>Build a Recipe</a></li>
-      </ul>
-    </nav>
+  <div class ='nav' ng-controller='IndexController'>
+    <ul>
+      <li><a href='#/question'>Ask a Question</a></li>
+      <li><a href='#/planner'>Meal Planner</a></li>
+      <li><a href='#/recipes'>Recipes</a></li>
+      <li><a href='#/builder'>Build a Recipe</a></li>
+    </ul>
   </div>
     <div ng-view></div>
+    <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
     <script src="lib/angular/angular.js"></script>
     <script src="lib/angular-route/angular-route.js"></script>
 

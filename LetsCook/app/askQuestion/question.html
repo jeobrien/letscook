@@ -1,5 +1,5 @@
 <div ng-controller='QuestionController'>
-  Question: <input type='text' ng-model='data.question'>
+  <input type='text' ng-model='data.question' placeholder='Ask a nutrition question here'>
   <button ng-click='getAnswer()'>Submit</button>
   <div class='answer'>
     <div class='message'>{{result.answer}}</div>
