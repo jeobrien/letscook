@@ -1,8 +1,18 @@
 {
   "name": "LetsCook",
   "version": "0.0.1",
-  "main": "app.js",
+  "main": "server/server.js",
   "author": "Jessica O'Brien",
+  "scripts": {
+    "start": "node server/server.js"
+  },
   "devDependencies": {
+    "request": "^2.34.0"
+  },
+  "dependencies": {
+    "express" : "~4.5.1",
+    "mongoose" : "~3.8.0",
+    "body-parser" : "~1.4.2",
+    "method-override" : "~2.0.2"  
   }
 }

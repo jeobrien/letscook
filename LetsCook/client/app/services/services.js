@@ -36,8 +36,19 @@ angular.module('LetsCook.services', [])
       return resp.data;
     });
   };
+  var getFromDB = function ($scope) {
+    return $http({
+      method: 'GET',
+      url: 'http://127.0.0.1:3000',
+    })
+    .then(function (resp) {
+      return resp.data;
+    });
+  };
+
   return {
-    getAnswer: getAnswer
+    getAnswer: getAnswer,
+    getFromDB: getFromDB
   };
 })
 .factory('Planner', function ($http) {
@@ -64,8 +75,16 @@ angular.module('LetsCook.services', [])
       return resp.data;
     });
   };
+  // var saveRecipe = function ($scope, recipe) {
+  //   return $http({
+  //     method: 'GET',
+  //     url: '/api/buildPlan',
+  //   })
+  //   .then(function (resp));
+  // };
   return {
     extractRecipe: extractRecipe
+    // saveRecipe: saveRecipe
   }
 });
 
