@@ -20,11 +20,13 @@ angular.module('LetsCook.builder', [])
       console.error(err);
     });
   };
-  $scope.toCanvas = function () {
-    html2canvas(document.body, {
-      onrendered: function(canvas) {
-          // canvas is the final rendered <canvas> element
-        document.body.append(canvas);
+  $scope.Submit = function () {
+    html2canvas(document.getElementsByClassName('recipeCard'), {
+      onrendered: function (canvas) {
+        var a = document.createElement('a');
+        a.href = canvas.toDataURL("recipeCard/png");
+        a.download = 'recipeCard.png';
+        a.click();
       }
     });
   };
