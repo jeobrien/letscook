@@ -23,4 +23,20 @@ angular.module('LetsCook.planner', [])
       console.error(err);
     });
   };
+  $scope.savePlanToDB = function () {
+    Planner.savePlanToDB($scope, $scope.plan).then(function (resp) {
+      $scope.DBResponse = resp;
+    })
+    .catch(function (err) {
+      console.error(err);
+    });
+  };
+  $scope.getPlansFromDB = function () {
+    Planner.getPlansFromDB($scope).then(function (recipes) {
+      $scope.DBResult = recipes;
+    })
+    .catch(function (err) {
+      console.error(err);
+    });
+  };
 });

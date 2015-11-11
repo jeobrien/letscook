@@ -11,12 +11,4 @@
       console.error(err);
     });
   };
-  $scope.getFromDB = function () {
-    Question.getFromDB($scope).then(function (data) {
-      $scope.DB = data;
-    })
-    .catch(function (err) {
-      console.error(err);
-    });
-  };
  });

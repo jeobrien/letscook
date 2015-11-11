@@ -23,4 +23,7 @@
         <div class="original">{{recipe.sourceName}}</div>
     </div>
   </div>
+  <button ng-click="getPlansFromDB()">Retrieve Plans</button>
+  <button ng-click="savePlanToDB()">Save Plan</button>
+  <div>{{DBResult}}</div>
 </div>

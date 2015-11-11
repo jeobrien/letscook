@@ -36,19 +36,9 @@ angular.module('LetsCook.services', [])
       return resp.data;
     });
   };
-  var getFromDB = function ($scope) {
-    return $http({
-      method: 'GET',
-      url: 'http://127.0.0.1:3000',
-    })
-    .then(function (resp) {
-      return resp.data;
-    });
-  };
 
   return {
-    getAnswer: getAnswer,
-    getFromDB: getFromDB
+    getAnswer: getAnswer
   };
 })
 .factory('Planner', function ($http) {
@@ -61,8 +51,29 @@ angular.module('LetsCook.services', [])
       return resp.data;
     });
   };
+  var getPlansFromDB = function ($scope) {
+    return $http({
+      method: 'GET',
+      url: '/api/plans',
+    })
+    .then(function (resp) {
+      return resp.data;
+    });
+  };
+  var savePlanToDB = function ($scope, plan) {
+    return $http({
+      method: 'POST',
+      url: '/api/plans',
+      data: plan
+    })
+    .then(function (resp) {
+      return resp;
+    });
+  };
   return {
-    getPlan: getPlan
+    getPlan: getPlan,
+    getPlansFromDB: getPlansFromDB,
+    savePlanToDB: savePlanToDB
   };
 })
 .factory('Builder', function ($http) {
@@ -75,16 +86,8 @@ angular.module('LetsCook.services', [])
       return resp.data;
     });
   };
-  // var saveRecipe = function ($scope, recipe) {
-  //   return $http({
-  //     method: 'GET',
-  //     url: '/api/buildPlan',
-  //   })
-  //   .then(function (resp));
-  // };
   return {
     extractRecipe: extractRecipe
-    // saveRecipe: saveRecipe
   }
 });
 
