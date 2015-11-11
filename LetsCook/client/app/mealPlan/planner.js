@@ -5,6 +5,8 @@ angular.module('LetsCook.planner', [])
   $scope.plan = [];
   $scope.loaded = false;
   $scope.dbLoaded = false;
+  $scope.dbSaved = false;
+
   $scope.timeFrames = ['day', 'week'];
 
   $scope.getPlan = function () {
@@ -27,6 +29,7 @@ angular.module('LetsCook.planner', [])
     $scope.plan.forEach(function (meal) {
       Planner.savePlanToDB($scope, meal).then(function (resp) {
         $scope.DBResponse = resp;
+        $scope.dbSaved = true;
       })
       .catch(function (err) {
         console.error(err);

@@ -10,31 +10,29 @@
     </select>
   </div>
   <br>
-  <button class='button' ng-click='getPlan()'>Submit</button>
   </form>
-  <div class='link'>
+  <button class='button' ng-click='getPlan()'>Submit</button>
+  <button class='button' ng-click="getPlansFromDB()">Retrieve Plans</button>
+  <button class='button' ng-click="savePlanToDB()">Save Plan</button>
+  <div ng-hide='dbSaved' class='link'>
     <div class='recipe' ng-repeat="recipe in plan | orderBy:'-aggregateLikes'">
       <div class='info'>
         <div class='likes'>
           <span class='count'>{{recipe.aggregateLikes}}</span> Likes
-          <!-- <img class='like' src="assets/like.png"> -->
-        </div>
-        <div class="title"><a href="{{recipe.sourceUrl}}">{{recipe.title}}</a></div>
-        <div class="original">{{recipe.sourceName}}</div>
-    </div>
-  </div>
-  <button ng-click="getPlansFromDB()">Retrieve Plans</button>
-  <button ng-click="savePlanToDB()">Save Plan</button>
-  <div ng-show='dbLoaded' class = 'link'>
-    <!-- {{DBResult}} -->
-    <div class='recipe' ng-repeat="recipe in DBResult | orderBy:'-aggregateLikes'">
-      <div class='info'>
-        <div class='likes'>
-          <span class='count'>{{recipe.aggregateLikes}}</span> Likes
-          <!-- <img class='like' src="assets/like.png"> -->
         </div>
         <div class="title"><a href="{{recipe.sourceUrl}}">{{recipe.title}}</a></div>
         <div class="original">{{recipe.sourceName}}</div>
     </div>
   </div>
 </div>
+
+<div ng-controller='PlannerController' class = 'link'>
+    <div class='recipe' ng-repeat="recipe in DBResult | orderBy:'-aggregateLikes'">
+      <div class='info'>
+        <div class='likes'>
+          <span class='count'>{{recipe.aggregateLikes}}</span> Likes
+        </div>
+        <div class="title"><a href="{{recipe.sourceUrl}}">{{recipe.title}}</a></div>
+        <div class="original">{{recipe.sourceName}}</div>
+    </div>
+  </div>

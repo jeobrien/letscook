@@ -3,7 +3,7 @@ var Recipe = require('./models');
   module.exports = function(app) {
 
       // server routes ===========================================================
-      // handle things like api calls
+      // handle things api calls
       // authentication routes
 
       // sample api route
@@ -22,7 +22,6 @@ var Recipe = require('./models');
 
     // route to handle creating goes here (app.post)
     app.post('/api/plans', function(req, res) {
-      console.log(req.body);
         // use mongoose to get all recipes in the database
       var recipe_data = {
         title: req.body.title,
