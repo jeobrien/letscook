@@ -4,11 +4,11 @@ angular.module('LetsCook.planner', [])
   $scope.data = {};
   $scope.plan = [];
   $scope.loaded = false;
+  $scope.dbLoaded = false;
   $scope.timeFrames = ['day', 'week'];
 
   $scope.getPlan = function () {
     Planner.getPlan($scope, $scope.data.calories, $scope.data.timeFrame).then(function (plan) {
-      // $scope.plan = plan;
       plan.meals.forEach(function (meal) {
         Recipes.getRecipe($scope, meal.id).then(function (summary){
           $scope.plan.push(summary);
@@ -24,16 +24,19 @@ angular.module('LetsCook.planner', [])
     });
   };
   $scope.savePlanToDB = function () {
-    Planner.savePlanToDB($scope, $scope.plan).then(function (resp) {
-      $scope.DBResponse = resp;
-    })
-    .catch(function (err) {
-      console.error(err);
+    $scope.plan.forEach(function (meal) {
+      Planner.savePlanToDB($scope, meal).then(function (resp) {
+        $scope.DBResponse = resp;
+      })
+      .catch(function (err) {
+        console.error(err);
+      });
     });
   };
   $scope.getPlansFromDB = function () {
     Planner.getPlansFromDB($scope).then(function (recipes) {
       $scope.DBResult = recipes;
+      $scope.dbLoaded = true;
     })
     .catch(function (err) {
       console.error(err);

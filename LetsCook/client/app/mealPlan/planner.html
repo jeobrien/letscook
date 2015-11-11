@@ -25,5 +25,16 @@
   </div>
   <button ng-click="getPlansFromDB()">Retrieve Plans</button>
   <button ng-click="savePlanToDB()">Save Plan</button>
-  <div>{{DBResult}}</div>
+  <div ng-show='dbLoaded' class = 'link'>
+    <!-- {{DBResult}} -->
+    <div class='recipe' ng-repeat="recipe in DBResult | orderBy:'-aggregateLikes'">
+      <div class='info'>
+        <div class='likes'>
+          <span class='count'>{{recipe.aggregateLikes}}</span> Likes
+          <!-- <img class='like' src="assets/like.png"> -->
+        </div>
+        <div class="title"><a href="{{recipe.sourceUrl}}">{{recipe.title}}</a></div>
+        <div class="original">{{recipe.sourceName}}</div>
+    </div>
+  </div>
 </div>

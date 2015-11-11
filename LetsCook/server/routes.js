@@ -22,11 +22,13 @@ var Recipe = require('./models');
 
     // route to handle creating goes here (app.post)
     app.post('/api/plans', function(req, res) {
+      console.log(req.body);
         // use mongoose to get all recipes in the database
       var recipe_data = {
-        title: req,
-        sourceUrl: 'dummy.com',
-        calories: 500
+        title: req.body.title,
+        sourceUrl: req.body.sourceUrl,
+        sourceName: req.body.sourceName,
+        aggregateLikes: req.body.aggregateLikes
       };
       var recipe = new Recipe(recipe_data);
       recipe.save(function (err, data) {

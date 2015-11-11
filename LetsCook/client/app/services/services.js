@@ -64,7 +64,8 @@ angular.module('LetsCook.services', [])
     return $http({
       method: 'POST',
       url: '/api/plans',
-      data: plan
+      data: plan,
+      headers: {'Content-Type': 'application/json'}
     })
     .then(function (resp) {
       return resp;
