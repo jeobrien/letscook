@@ -11,15 +11,8 @@ angular.module('LetsCook.planner', [])
 
   $scope.getPlan = function () {
     Planner.getPlan($scope, $scope.data.calories, $scope.data.timeFrame).then(function (plan) {
-      plan.meals.forEach(function (meal) {
-        Recipes.getRecipe($scope, meal.id).then(function (summary){
-          $scope.plan.push(summary);
-          $scope.loaded = true;
-        })
-        .catch(function (err){
-          console.error(err);
-        });
-      })
+      $scope.plan = plan;
+      $scope.loaded = true;
     })
     .catch(function (err) {
       console.error(err);

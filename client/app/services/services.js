@@ -5,38 +5,38 @@ angular.module('LetsCook.services', [])
   var getRecipes = function ($scope, cuisine, diet, exclude, intolerances, query, type) {
     return $http({
       method: 'GET',
-      url: 'https://webknox-recipes.p.mashape.com/recipes/search?cuisine='+encodeURIComponent(cuisine).replace(/%20/g, "+")+'&diet='+encodeURIComponent(diet).replace(/%20/g, "+")+'&excludeIngredients='+encodeURIComponent(exclude).replace(/%20/g, "+")+'&intolerances='+encodeURIComponent(intolerances).replace(/%20/g, "+")+'&number=5&offset=0&query='+encodeURIComponent(query).replace(/%20/g, "+")+'&type='+encodeURIComponent(type).replace(/%20/g, "+")
+      url: '/recipes',
+      params: {
+        cuisine: cuisine,
+        diet: diet,
+        exclude: exclude,
+        intolerances: intolerances,
+        query: query,
+        type: type
+      }
     })
     .then(function (resp) {
       return resp.data.results;
     });
   };
-    var getRecipe = function ($scope, id) {
-      return $http({
-        method: 'GET',
-        url: 'https://webknox-recipes.p.mashape.com/recipes/'+id+'/information'
-      })
-      .then(function (resp) {
-        return resp.data;
-      });
-    };
   return {
-    getRecipes: getRecipes,
-    getRecipe: getRecipe
+    getRecipes: getRecipes
   };
-
 })
 .factory('Question', function ($http) {
   var getAnswer = function ($scope, question) {
     return $http({
       method: 'GET',
-      url: 'https://webknox-recipes.p.mashape.com/recipes/quickAnswer?q='+encodeURIComponent(question).replace(/%20/g, "+")
+      url: '/question',
+      params: {
+        question: question
+      }
     })
     .then(function (resp) {
+      console.log(resp);
       return resp.data;
     });
   };
-
   return {
     getAnswer: getAnswer
   };
@@ -45,7 +45,11 @@ angular.module('LetsCook.services', [])
   var getPlan = function ($scope, calories, time) {
     return $http({
       method: 'GET',
-      url: 'https://webknox-recipes.p.mashape.com/recipes/mealplans/generate?targetCalories='+calories+'&timeFrame='+time
+      url: '/searchplan',
+      params: {
+        calories: calories,
+        time: time
+      }
     })
     .then(function (resp) {
       return resp.data;
@@ -81,7 +85,10 @@ angular.module('LetsCook.services', [])
   var extractRecipe = function ($scope, url) {
     return $http({
       method: 'GET',
-      url: 'https://webknox-recipes.p.mashape.com/recipes/extract?forceExtraction=false&url='+encodeURIComponent(url).replace(/%20/g, "+")
+      url: '/recipecard',
+      params: {
+        url: url
+      }
     })
     .then(function (resp) {
       return resp.data;

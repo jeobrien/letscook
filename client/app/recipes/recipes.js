@@ -26,16 +26,7 @@ angular.module('LetsCook.recipes', [])
 
   $scope.getRecipes = function () {
     Recipes.getRecipes($scope, $scope.data.cuisine, $scope.data.diet, $scope.data.exclude, $scope.data.intolerances, $scope.data.query, $scope.data.type).then(function (responses) {
-      // for each result, call getRecipe
-      responses.forEach(function (response) {
-        Recipes.getRecipe($scope, response.id).then(function (summary) {
-          $scope.loaded = true;
-          $scope.results.push(summary);
-        })
-        .catch(function (err) {
-          console.error(err);
-        });
-      });
+      $scope.results = responses;
     })
     .catch(function (err) {
       console.error(err);
