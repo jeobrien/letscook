@@ -10,8 +10,9 @@ angular.module('LetsCook.planner', [])
   $scope.timeFrames = ['day', 'week'];
 
   $scope.getPlan = function () {
-    Planner.getPlan($scope, $scope.data.calories, $scope.data.timeFrame).then(function (plan) {
+    Planner.getPlan($scope, $scope.data.calories, $scope.data.timeFrames).then(function (plan) {
       $scope.plan = plan;
+      console.log(plan);
       $scope.loaded = true;
     })
     .catch(function (err) {
