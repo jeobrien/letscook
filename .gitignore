@@ -1,5 +1,5 @@
 ### node etc ###
-key.txt
+keys.js
 *.DS_Store
 # Logs
 logs
@@ -27,10 +27,3 @@ dist/
 # Deployed apps should consider commenting these lines out:
 # see https://npmjs.org/doc/faq.html#Should-I-check-my-node_modules-folder-into-git
 node_modules/
-bower_components/
-
-# Floobits
-.floo
-.floobit
-.floo
-.flooignore

@@ -43,7 +43,7 @@ var Recipe = require('./models');
     // frontend routes =========================================================
     // route to handle all angular requests
     app.get('*', function(req, res) {
-        res.sendfile('./client/index.html'); // load public/index.html file
+        res.sendfile('../client/index.html'); // load public/index.html file
     });
 
   };
