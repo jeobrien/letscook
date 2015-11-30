@@ -1,4 +1,4 @@
-<div ng-controller='RecipeController'>
+<div>
   <form ng-hide='loaded' name="recipeForm">
     <table>
       <tr>
@@ -32,12 +32,8 @@
   </form>
 
   <div class='link'>
-    <div class='recipe' ng-repeat="recipe in results | orderBy:'-aggregateLikes'">
+    <div class='recipe' ng-repeat="recipe in results">
       <div class='info'>
-        <div class='likes'>
-          <span class='count'>{{recipe.aggregateLikes}}</span> Likes
-          <!-- <img class='like' src="assets/like.png"> -->
-        </div>
         <div class="title"><a href="{{recipe.sourceUrl}}">{{recipe.title}}</a></div>
         <div class="original">{{recipe.sourceName}}</div>
     </div>

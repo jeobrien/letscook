@@ -42,13 +42,12 @@ angular.module('LetsCook.services', [])
   };
 })
 .factory('Planner', function ($http) {
-  var getPlan = function ($scope, calories, time) {
+  var getPlan = function ($scope, calories) {
     return $http({
       method: 'GET',
       url: '/searchplan',
       params: {
-        calories: calories,
-        time: time
+        calories: calories
       }
     })
     .then(function (resp) {

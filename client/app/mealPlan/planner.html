@@ -1,38 +1,43 @@
-<div ng-controller='PlannerController'>
+<div>
   <form ng-hide='loaded'>
   <input type='text' ng-model='data.calories' placeholder='How many calories are you aiming for?'>
   <br>
   <br>
-  <div class="mainselection">
-    TimeFrame:
-    <br>
-    <select ng-model='data.timeFrames' ng-options='timeFrame for timeFrame in timeFrames'>
-    </select>
-  </div>
-  <br>
   </form>
-  <button class='button' ng-click='getPlan()'>Submit</button>
+  <button class='button' ng-click='getPlan()'ng-hide='loaded'>Submit</button>
   <button class='button' ng-click="getPlansFromDB()">Retrieve Plans</button>
   <button class='button' ng-click="savePlanToDB()">Save Plan</button>
-  <div ng-hide='dbSaved' class='link'>
-    <div class='recipe' ng-repeat="recipe in plan | orderBy:'-aggregateLikes'">
-      <div class='info'>
-        <div class='likes'>
-          <span class='count'>{{recipe.aggregateLikes}}</span> Likes
-        </div>
-        <div class="title"><a href="{{recipe.sourceUrl}}">{{recipe.title}}</a></div>
-        <div class="original">{{recipe.sourceName}}</div>
+  <!-- <div class='plan'>
+    Calories: {{plan.nutrients.calories}}
+    <div class='recipe' ng-repeat="recipe in plan.meals">
+      <div>
+        <div><a href="{{recipe.url}}">{{recipe.title}}</a></div>
+        <img src={{recipe.image}}>
     </div>
-  </div>
+  </div> -->
+  <div ng-show='loaded' class="row">
+    <h2>Calories: {{plan.nutrients.calories}}</h2>
+    <div ng-repeat='recipe in plan.meals'>
+      <div class="col-sm-5 col-md-4">
+        <div class="thumbnail">
+          <div class='imageContainer' style='background: url({{recipe.image}}) center center'>
+          </div>
+          <div class='thumbnailtxt'>
+            <h3>{{recipe.title}}</h3>
+           <p><a href="{{recipe.url}}" class="btn btn-primary" role="button">Go to recipe</a></p>
+         </div>
+        </div> <!-- end thumbnail -->
+      </div> <!-- end col definition -->
+    </div> <!-- end ngrepeat -->
+  </div> <!-- end thumbnail row -->
 </div>
 
-<div ng-controller='PlannerController' class = 'link'>
-    <div class='recipe' ng-repeat="recipe in DBResult | orderBy:'-aggregateLikes'">
-      <div class='info'>
-        <div class='likes'>
-          <span class='count'>{{recipe.aggregateLikes}}</span> Likes
-        </div>
-        <div class="title"><a href="{{recipe.sourceUrl}}">{{recipe.title}}</a></div>
-        <div class="original">{{recipe.sourceName}}</div>
-    </div>
+
+
+<!-- <div class = 'link'>
+  <div class='recipe' ng-repeat="recipe in DBResult">
+    <div class='info'>
+      <div class="title"><a href="{{recipe.url}}">{{recipe.title}}</a></div>
+      <img src={{recipe.image}}>
   </div>
+</div> -->

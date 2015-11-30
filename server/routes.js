@@ -59,7 +59,7 @@ var key = require('../keys');
         uri: 'https://webknox-recipes.p.mashape.com/recipes/mealplans/generate',
         qs: {
           targetCalories: req.query.calories,
-          timeFrame: req.query.time
+          timeFrame: 'day'
         },
         headers: {
           'X-Mashape-Key': key,
@@ -99,28 +99,16 @@ var key = require('../keys');
     });
 
     app.get('/api/plans', function (req, res) {
-        // use mongoose to get all recipes in the database
       Recipe.find(function(err, recipes) {
-
-        // if there is an error retrieving, send the error. 
-        // nothing after res.send(err) will execute
-        if (err)
-            res.send(err);
-
-        res.json(recipes); // return all recipes in JSON format
+        if (err) {
+          res.send(err);
+        }
+        res.json(recipes);
       });
     });
 
-    // route to handle creating goes here (app.post)
     app.post('/api/plans', function (req, res) {
-        // use mongoose to get all recipes in the database
-      var recipe_data = {
-        title: req.body.title,
-        sourceUrl: req.body.sourceUrl,
-        sourceName: req.body.sourceName,
-        aggregateLikes: req.body.aggregateLikes
-      };
-      var recipe = new Recipe(recipe_data);
+      var recipe = new Recipe(req.body);
       recipe.save(function (err, data) {
         if (err) {
           res.json(err);
@@ -129,7 +117,6 @@ var key = require('../keys');
         }
       });
     });
-    // route to handle delete goes here (app.delete)
 
     // frontend routes =========================================================
     // route to handle all angular requests

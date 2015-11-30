@@ -2,17 +2,26 @@ angular.module('LetsCook.planner', [])
 
 .controller('PlannerController', function ($scope, Planner, Recipes) {
   $scope.data = {};
-  $scope.plan = [];
+  $scope.plan = {
+    meals: [],
+    nutrients: {}
+  };
   $scope.loaded = false;
   $scope.dbLoaded = false;
   $scope.dbSaved = false;
 
-  $scope.timeFrames = ['day', 'week'];
-
   $scope.getPlan = function () {
-    Planner.getPlan($scope, $scope.data.calories, $scope.data.timeFrames).then(function (plan) {
-      $scope.plan = plan;
-      console.log(plan);
+    Planner.getPlan($scope, $scope.data.calories).then(function (plan) {
+      $scope.plan.nutrients = plan.nutrients;
+      plan.meals.forEach(function (meal) {
+        var url = (meal.image).slice(0, -4);
+        $scope.plan.meals.push({
+          id: meal.id,
+          title: meal.title,
+          image: 'https://spoonacular.com/recipeImages/'+meal.image,
+          url: 'https://spoonacular.com/recipes/'+url
+        });
+      });
       $scope.loaded = true;
     })
     .catch(function (err) {
@@ -20,14 +29,12 @@ angular.module('LetsCook.planner', [])
     });
   };
   $scope.savePlanToDB = function () {
-    $scope.plan.forEach(function (meal) {
-      Planner.savePlanToDB($scope, meal).then(function (resp) {
-        $scope.DBResponse = resp;
-        $scope.dbSaved = true;
-      })
-      .catch(function (err) {
-        console.error(err);
-      });
+    Planner.savePlanToDB($scope, $scope.plan).then(function (resp) {
+      $scope.DBResponse = resp;
+      $scope.dbSaved = true;
+    })
+    .catch(function (err) {
+      console.error(err);
     });
   };
   $scope.getPlansFromDB = function () {

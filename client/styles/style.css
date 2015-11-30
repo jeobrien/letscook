@@ -98,8 +98,6 @@ button:active {
 .mainselection {
     overflow:hidden;
     width:350px;
-    background: url("images/dropdown_arrow.png") no-repeat #fff 319px 2px;
-    /* dropdown_arrow.png is a 31x28 image */
 }
 select {
     border:0;
@@ -240,6 +238,27 @@ input[type=url]:focus {
 
 .creator .message {
   clear: both;
+}
+
+.thumbnail {
+  padding: 0px;
+  overflow: hidden;
+}
+
+.imageContainer {
+  background-size: cover !important;
+  background-repeat: no-repeat;
+  height : 415px;
+  width: 100%;
+  overflow: hidden;
+  margin: auto;
+}
+
+.thumbnailtxt {
+  padding: 20px 10px 10px 10px;
+  margin-top: -164px;
+  background-image: linear-gradient(transparent, rgba(0, 0, 0, 0.79), black);
+  color: white;
 }
 
 .recipeCard {
