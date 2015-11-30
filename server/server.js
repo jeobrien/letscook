@@ -7,15 +7,13 @@ var mongoose       = require('mongoose');
 var key            = require('../keys');
 
 // configuration ===========================================
-    
-// config files
-var db = require('./db');
 
 // set our port
-var port = 8080; 
+var port = process.env.PORT || 3000;
+mongoURI = process.env.MONGOLAB_URI || 'mongodb://localhost/recipes';
 
 // connect to our mongoDB database 
-mongoose.connect(db.url); 
+mongoose.connect(mongoURI); 
 
 app.use(bodyParser.json()); 
 
