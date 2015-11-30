@@ -1,6 +1,7 @@
 var Recipe = require('./models');
 var request = require('request-promise');
 var key = require('../keys');
+var mongoose = require('mongoose');
 
   module.exports = function(app) {
 
@@ -108,7 +109,9 @@ var key = require('../keys');
     });
 
     app.post('/api/plans', function (req, res) {
-      var recipe = new Recipe(req.body);
+      var recipe = new Recipe({
+        plan: req.body
+      });
       recipe.save(function (err, data) {
         if (err) {
           res.json(err);
@@ -116,12 +119,6 @@ var key = require('../keys');
           res.json(data);
         }
       });
-    });
-
-    // frontend routes =========================================================
-    // route to handle all angular requests
-    app.get('*', function (req, res) {
-        res.sendfile('../client/index.html'); // load public/index.html file
     });
 
   };
