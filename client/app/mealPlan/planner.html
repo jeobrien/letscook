@@ -1,22 +1,18 @@
-<div>
-  <form ng-hide='loaded'>
-  <input type='text' ng-model='data.calories' placeholder='How many calories are you aiming for?'>
-  <br>
-  <br>
-  </form>
-  <button class='button' ng-click='getPlan()'ng-hide='loaded'>Submit</button>
-  <button class='button' ng-click="getPlansFromDB()">Retrieve Plans</button>
-  <button class='button' ng-click="savePlanToDB()">Save Plan</button>
-  <!-- <div class='plan'>
-    Calories: {{plan.nutrients.calories}}
-    <div class='recipe' ng-repeat="recipe in plan.meals">
-      <div>
-        <div><a href="{{recipe.url}}">{{recipe.title}}</a></div>
-        <img src={{recipe.image}}>
-    </div>
-  </div> -->
+<form ng-hide='loaded'>
+<input type='text' ng-model='data.calories' placeholder='How many calories are you aiming for?'>
+<br>
+<br>
+</form>
+<button class='button' ng-click='getPlan()'ng-hide='loaded'>Submit</button>
+<button class='button' ng-click="getPlansFromDB()">Retrieve Plans</button>
+<button class='button' ng-click="savePlanToDB()">Save Plan</button>
+
+<!-- <h4 ng-show='loaded && plan.meals.length!=0'>Showing {{showing}} of {{plan.meals.length}} plans in the database</h4>
+<h4 ng-show='data.length==0'>No plans found</h4> -->
+<!-- THUMBNAILS FOR PLANS - ONE PAGE PER PLAN -->
+<div ng-repeat='plan in filteredPlans'>
+  <h3>Calories in plan: {{plan.nutrients.calories}}</h3>
   <div ng-show='loaded' class="row">
-    <h3>Calories: {{plan.nutrients.calories}}</h3>
     <div ng-repeat='recipe in plan.meals'>
       <div class="col-sm-5 col-md-4">
         <div class="thumbnail">
@@ -31,13 +27,8 @@
     </div> <!-- end ngrepeat -->
   </div> <!-- end thumbnail row -->
 </div>
+<div class='text-center'>
+    <pagination total-items="totalItems" items-per-page="itemsPerPage" page="currentPage"></pagination>
+</div>
 
 
-
-<!-- <div class = 'link'>
-  <div class='recipe' ng-repeat="recipe in DBResult">
-    <div class='info'>
-      <div class="title"><a href="{{recipe.url}}">{{recipe.title}}</a></div>
-      <img src={{recipe.image}}>
-  </div>
-</div> -->
