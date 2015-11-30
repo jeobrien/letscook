@@ -4,7 +4,8 @@
   "main": "server/server.js",
   "author": "Jessica O'Brien",
   "scripts": {
-    "start": "node server/server.js"
+    "start": "node server/server.js",
+    "postinstall": "bower install"
   },
   "devDependencies": {
     "request": "^2.34.0"
