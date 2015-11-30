@@ -7,7 +7,7 @@ body {
 
 .nav ul {
   list-style: none;
-  background-color: rgb(109, 189, 214);;
+  background-color: rgb(109, 189, 214);
   text-align: center;
   padding: 0;
   margin: 50px;
@@ -259,6 +259,17 @@ input[type=url]:focus {
   margin-top: -164px;
   background-image: linear-gradient(transparent, rgba(0, 0, 0, 0.79), black);
   color: white;
+}
+
+.btn-primary,
+.btn-primary:hover,
+.btn-primary:active,
+.btn-primary:visited,
+.btn-primary:focus {
+    background-color: rgb(109, 189, 214);
+    border-color: rgb(109, 189, 214);
+    font-size: 1.2em;
+    font-family: 'ABeeZee', sans-serif;
 }
 
 .recipeCard {
