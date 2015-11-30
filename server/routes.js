@@ -1,6 +1,6 @@
 var Recipe = require('./models');
 var request = require('request-promise');
-var key = require('../keys');
+var key = process.env.MASHAPE_API_KEY || require('../keys');
 var mongoose = require('mongoose');
 
   module.exports = function(app) {
